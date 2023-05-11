@@ -56,7 +56,7 @@ public class EmployeeDao {
 	 */
 	public List<Employee> findByDepartmentId(int departmentId) {
 		Connection con = DBManager.createConnection();
-		String sql = "SELECT id, name, gender, department_id FROM " + TABLE_NAME + " WHERE department_id = ?";
+		String sql = "SELECT id, name, age, gender, department_id FROM " + TABLE_NAME + " WHERE department_id = ? ORDER BY id";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			// SQLの １番目の「?」 の部分に値(departmentId)をセットする
