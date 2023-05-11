@@ -55,7 +55,7 @@ public class MemberDao2 {
 	 * @return メンバ情報一覧
 	 */
 	public List<Member> findByName(String name) {
-		String sql = "SELECT id, name, birth_day, gender, color_id from " + TABLE_NAME + " WHERE name LIKE ?";
+		String sql = "SELECT id, name, birth_day, gender, color_id from " + TABLE_NAME + " WHERE name LIKE ? order by birth_day desc";
 
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
 			pstmt.setString(1, "%" + name + "%");

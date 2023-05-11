@@ -74,7 +74,7 @@ public class MemberDao {
 		Connection con = DBManager.createConnection();
 
 		// 手順２：SQL作成※
-		String sql = "SELECT id, name, birth_day, gender, color_id from " + TABLE_NAME + " WHERE name LIKE ?";
+		String sql = "SELECT id, name, birth_day, gender, color_id from " + TABLE_NAME + " WHERE name LIKE ?  order by birth_day desc";
 
 		try {
 
