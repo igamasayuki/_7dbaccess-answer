@@ -13,7 +13,7 @@ import com.example.answer.ex_member_management.entity.Student;
 
 /**
  * studentsテーブルとhobbiesテーブルを操作するDao.
- * 
+ *
  * @author igamasayuki
  *
  */
@@ -26,7 +26,7 @@ public class StudentDao {
 
 	/**
 	 * 主キー検索を行います. 検索された受講生情報には趣味リストが含まれます。
-	 * 
+	 *
 	 * @param id 主キー
 	 * @return 受講生情報 データが存在しない場合nullが返ります。
 	 */
@@ -41,7 +41,7 @@ public class StudentDao {
 		sql.append("WHERE s.id = ?;");
 
 		try (Connection con = DBManager.createConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql.toString())) {
+			 PreparedStatement pstmt = con.prepareStatement(sql.toString())) {
 
 			pstmt.setInt(1, id);
 
@@ -49,25 +49,25 @@ public class StudentDao {
 
 				List<Student> students = createStudentHobby(rs);
 
-				if (students.size() != 0) {
-					// studentsリストの中身が空ではなかったら、先頭のインスタンスを返す。
-					return students.get(0);
-				} else {
+				if (students.isEmpty()) {
 					// studentsリストの中身が空だったらnullを返す。
 					return null;
+				} else {
+					// studentsリストの中身が空ではなかったら、先頭のインスタンスを返す。
+					return students.get(0);
 				}
 
 			}
 		} catch (Exception e) {
-			throw new RuntimeException();
+			throw new RuntimeException("失敗", e);
 		}
 	}
 
 	/**
 	 * 全件検索を行います. 検索された受講生情報には趣味リストが含まれます。
-	 * 
-	 * @return 受講生情報一覧　データが存在しない場合、空のリストが返ります。
-	 * 
+	 *
+	 * @return 受講生情報一覧 データが存在しない場合、空のリストが返ります。
+	 *
 	 */
 	public List<Student> findAll() {
 
@@ -80,8 +80,8 @@ public class StudentDao {
 		sql.append("ORDER BY s.id;");
 
 		try (Connection con = DBManager.createConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql.toString());
-				ResultSet rs = pstmt.executeQuery()) {
+			 PreparedStatement pstmt = con.prepareStatement(sql.toString());
+			 ResultSet rs = pstmt.executeQuery()) {
 
 			List<Student> studentList = createStudentHobby(rs);
 
@@ -95,7 +95,7 @@ public class StudentDao {
 	/**
 	 * 受講生情報と趣味一覧の登録を行います.<br>
 	 * このメソッドはsynchronizedキーワードを使って排他制御しています。
-	 * 
+	 *
 	 * @param student 受講生情報
 	 */
 	public synchronized void insert(Student student) {
@@ -141,12 +141,12 @@ public class StudentDao {
 
 	/*
 	 * 検索結果であるResultSetオブジェクトから趣味一覧を含めた受講生一覧を検索します.
-	 * 
+	 *
 	 * @param rs 検索結果(ResultSetオブジェクト)
-	 * 
+	 *
 	 * @return 趣味一覧が含まれた受講生一覧
-	 * 
-	 * @throws SQLException DB関連のエラーが発生した際に発生する
+	 *
+	 * @throws SQLException DB関連のエラーが起こった際に発生
 	 */
 	private List<Student> createStudentHobby(ResultSet rs) throws SQLException {
 
@@ -156,19 +156,19 @@ public class StudentDao {
 		List<Hobby> hobbyList = null;
 		List<Student> studentList = new ArrayList<>();
 
-		int preId = -1;
+		int preStudentId = -1;
 
 		while (rs.next()) {
-			int id = rs.getInt("s_id");
+			int sutudentId = rs.getInt("s_id");
 
 			// studentテーブルのidが切り替わったら行う処理,
-			if (id != preId) {
+			if (sutudentId != preStudentId) {
 				student = new Student();
 				student.setId(rs.getInt("s_id"));
 				student.setName(rs.getString("s_name"));
 				student.setAge(rs.getInt("s_age"));
 
-				hobbyList = new ArrayList<Hobby>();
+				hobbyList = new ArrayList<>();
 				student.setHobbyList(hobbyList);// 先にhobbyListをstudentにsetし、後から値をsetし参照している。
 
 				studentList.add(student);
@@ -179,11 +179,11 @@ public class StudentDao {
 				hobby.setId(rs.getInt("h_id"));
 				hobby.setName(rs.getString("h_name"));
 				hobby.setStudentId(rs.getInt("h_student_id"));
-				
+
 				hobbyList.add(hobby);
 			}
 
-			preId = id;
+			preStudentId = sutudentId;
 		}
 
 		return studentList;
