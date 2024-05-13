@@ -38,7 +38,7 @@ public class MemberDao2 {
 					member.setName(rs.getString("name"));
 					member.setBirthday(rs.getDate("birth_day").toLocalDate());
 					member.setGender(rs.getString("gender"));
-					member.setColorId(rs.getInt("color_id"));
+					member.setColorId((Integer)rs.getObject("color_id"));
 					return member;
 				}
 			}
@@ -67,7 +67,7 @@ public class MemberDao2 {
 					member.setName(rs.getString("name"));
 					member.setBirthday(rs.getDate("birth_day").toLocalDate());
 					member.setGender(rs.getString("gender"));
-					member.setColorId(rs.getInt("color_id"));
+					member.setColorId((Integer)rs.getObject("color_id"));
 					list.add(member);
 				}
 				return list;
@@ -95,7 +95,7 @@ public class MemberDao2 {
 				member.setName(rs.getString("name"));
 				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
-				member.setColorId(rs.getInt("color_id"));
+				member.setColorId((Integer)rs.getObject("color_id"));
 				list.add(member);
 			}
 			return list;

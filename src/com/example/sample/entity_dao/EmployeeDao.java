@@ -73,9 +73,9 @@ public class EmployeeDao {
 				Employee employee = new Employee();
 				employee.setId(rs.getInt("id"));
 				employee.setName(rs.getString("name"));
-				employee.setAge(rs.getInt("age"));
+				employee.setAge((Integer)rs.getObject("age"));
 				employee.setGender(rs.getString("gender"));
-				employee.setDepartmentId(rs.getInt("department_id"));
+				employee.setDepartmentId((Integer)rs.getObject("department_id"));
 				employeeList.add(employee); // EntityをArrayListに追加
 			}
 

@@ -116,9 +116,9 @@ public class EmployeeDao {
 		Employee employee = new Employee();
 		employee.setId(rs.getInt("e_id"));
 		employee.setName(rs.getString("e_name"));
-		employee.setAge(rs.getInt("e_age"));
+		employee.setAge((Integer)rs.getObject("e_age"));
 		employee.setGender(rs.getString("e_gender"));
-		employee.setDepartmentId(rs.getInt("e_department_id"));
+		employee.setDepartmentId((Integer)rs.getObject("e_department_id"));
 		Department department = new Department();
 		department.setId(rs.getInt("d_id"));
 		department.setName(rs.getString("d_name"));

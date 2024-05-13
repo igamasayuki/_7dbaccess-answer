@@ -166,7 +166,7 @@ public class StudentDao {
 				student = new Student();
 				student.setId(rs.getInt("s_id"));
 				student.setName(rs.getString("s_name"));
-				student.setAge(rs.getInt("s_age"));
+				student.setAge((Integer)rs.getObject("s_age"));
 
 				hobbyList = new ArrayList<>();
 				student.setHobbyList(hobbyList);// 先にhobbyListをstudentにsetし、後から値をsetし参照している。
