@@ -47,7 +47,7 @@ public class EmployeeDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			System.err.println("SQL = " + sql); // 発行したSQLを出力
-			throw new RuntimeException("load処理に失敗しました", e);
+			throw new RuntimeException("findById処理に失敗しました", e);
 		}
 	}
 

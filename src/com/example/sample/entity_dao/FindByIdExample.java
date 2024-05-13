@@ -1,6 +1,6 @@
 package com.example.sample.entity_dao;
 
-public class LoadExample {
+public class FindByIdExample {
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
 		Employee employee = dao.findById(2);

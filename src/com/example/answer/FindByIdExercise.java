@@ -1,6 +1,6 @@
 package com.example.answer;
 
-public class LoadExercise {
+public class FindByIdExercise {
 
 	public static void main(String[] args) {
 		DepartmentDao dao = new DepartmentDao();

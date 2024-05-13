@@ -43,7 +43,7 @@ public class DepartmentDao {
 			return null; // 指定idの行がない場合などはnullを返す
 		} catch (SQLException ex) {
 			System.err.println("SQL = " + sql); // 発行したSQLを出力
-			throw new RuntimeException("load処理に失敗しました", ex);
+			throw new RuntimeException("findById処理に失敗しました", ex);
 		} finally {
 			DBManager.closeConnection(con); // 切断
 		}
