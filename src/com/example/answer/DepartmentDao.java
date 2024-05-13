@@ -17,12 +17,12 @@ public class DepartmentDao {
 	private static final String TABLE_NAME = "departments"; // テーブル名
 	
 	/**
-	 * departmentsテーブルの主キーを元にDepartmentオブジェクトをロードする.
+	 * departmentsテーブルの主キーを元にDepartmentオブジェクトを主キー検索する.
 	 * 
 	 * @param id departmentsテーブルの主キーであるidの値
 	 * @return 主キーに対応するテーブルの行の情報を持つDepartmentオブジェクト
 	 */
-	public Department load(int id) {
+	public Department findById(int id) {
 		Connection con = DBManager.createConnection(); // 接続
 
 		// 実行するSQL文 (fromの次とwhereの前に半角スペースを入れています)

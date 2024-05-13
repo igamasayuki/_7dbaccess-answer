@@ -16,7 +16,7 @@ public class EmployeeDao {
 	 * @param id employeesテーブルの主キーであるidの値
 	 * @return 主キーに対応するテーブルの行の情報を持つEmployeeオブジェクト
 	 */
-	public Employee load(int id) {
+	public Employee findById(int id) {
 		Connection con = DBManager.createConnection(); // 接続
 
 		// 実行するSQL文 (fromの次とwhereの前に半角スペースを入れています)

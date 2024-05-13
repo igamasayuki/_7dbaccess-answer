@@ -7,7 +7,7 @@ public class DeleteExample {
 		dao.deleteById(1000);
 		
 		// 削除を確認
-		Employee employee = dao.load(1000);
+		Employee employee = dao.findById(1000);
 		// 消えていたらnullになります
 		System.out.println(employee);
 	}

@@ -27,7 +27,7 @@ public class MemberDao {
 	 * @param id 主キー
 	 * @return メンバー情報
 	 */
-	public Member load(int id) {
+	public Member findById(int id) {
 		// 手順１：接続
 		Connection con = DBManager.createConnection();
 

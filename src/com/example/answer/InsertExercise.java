@@ -14,7 +14,7 @@ public class InsertExercise {
 		dao.insert(department);
 
 		// 追加したデータを取り出してきちんと追加されているかを確認する
-		department = dao.load(1000); 
+		department = dao.findById(1000); 
 		System.out.println("id = " + department.getId());
 		System.out.println("name = " + department.getName());
 

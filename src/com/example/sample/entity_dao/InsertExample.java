@@ -16,7 +16,7 @@ public class InsertExample {
 		dao.insert(employee);
 
 		// 追加したデータを取り出してきちんと追加されているかを確認する
-		employee = dao.load(1000); 
+		employee = dao.findById(1000); 
 		System.out.println("id = " + employee.getId());
 		System.out.println("name = " + employee.getName());
 		System.out.println("age = " + employee.getAge());

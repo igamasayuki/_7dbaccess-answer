@@ -28,7 +28,7 @@ public class EmployeeDao {
 	 * @param id employeesテーブルの主キーであるidの値
 	 * @return 主キーに対応するテーブルの行の情報を持つEmployeeオブジェクト
 	 */
-	public Employee load(int id) {
+	public Employee findById(int id) {
 
 		String sql = SELECT_STATEMENT + " " + FROM_STATEMENT + " WHERE e.id = ?";
 

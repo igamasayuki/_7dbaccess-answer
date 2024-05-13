@@ -15,7 +15,7 @@ public class Intermediate1 {
 
 		EmployeeDao dao = new EmployeeDao();
 
-		Employee employee = dao.load(1);
+		Employee employee = dao.findById(1);
 		System.out.println(employee);
 
 	}

@@ -27,7 +27,7 @@ public class MemberDao2 {
 	 * @param id 主キー
 	 * @return メンバー情報
 	 */
-	public Member load(int id) {
+	public Member findById(int id) {
 		String sql = "SELECT id, name, birth_day, gender, color_id FROM " + TABLE_NAME + " WHERE id = ?";
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
 			pstmt.setInt(1, id);

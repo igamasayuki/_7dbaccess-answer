@@ -13,7 +13,7 @@ public class Beginner4 {
 		MemberDao memberDao = new MemberDao();
 		
 		// 更新対象のメンバーを１件取得
-		Member updateMember = memberDao.load(1);
+		Member updateMember = memberDao.findById(1);
 		updateMember.setName("伊賀将之");
 		updateMember.setBirthday(LocalDate.of(1979, 7, 27));
 		updateMember.setGender("男");

@@ -5,8 +5,8 @@ public class UpdateExercise {
 		DepartmentDao dao = new DepartmentDao();
 
 		System.out.println("-----更新前-----");
-		// 更新したい部署情報をまずload()メソッドを使って取得する
-		Department department = dao.load(1000);
+		// 更新したい部署情報をまずfindById()メソッドを使って取得する
+		Department department = dao.findById(1000);
 		System.out.println("id = " + department.getId());
 		System.out.println("name = " + department.getName());
 
@@ -15,7 +15,7 @@ public class UpdateExercise {
 		dao.update(department);
 
 		System.out.println("-----更新後-----");
-		department = dao.load(1000);
+		department = dao.findById(1000);
 		System.out.println("id = " + department.getId());
 		System.out.println("name = " + department.getName());
 	}

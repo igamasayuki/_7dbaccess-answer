@@ -18,7 +18,7 @@ public class Advanced2 {
 
 		StudentDao dao = new StudentDao();
 
-		Student student = dao.load(1);
+		Student student = dao.findById(1);
 
 		if (student == null) {
 			System.out.println("検索結果は0件です");

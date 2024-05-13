@@ -30,7 +30,7 @@ public class StudentDao {
 	 * @param id 主キー
 	 * @return 受講生情報 データが存在しない場合nullが返ります。
 	 */
-	public Student load(int id) {
+	public Student findById(int id) {
 
 		StringBuilder sql = new StringBuilder();
 		sql.append(

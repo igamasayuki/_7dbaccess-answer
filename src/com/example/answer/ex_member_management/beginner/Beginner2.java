@@ -8,7 +8,7 @@ public class Beginner2 {
 	public static void main(String[] args) {
 		MemberDao memberDao = new MemberDao();
 
-		Member member = memberDao.load(1);
+		Member member = memberDao.findById(1);
 
 		System.out.println("id:" + member.getId());
 		System.out.println("name:" + member.getName());

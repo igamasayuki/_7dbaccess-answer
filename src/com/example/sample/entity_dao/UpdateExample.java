@@ -6,8 +6,8 @@ public class UpdateExample {
 		EmployeeDao dao = new EmployeeDao();
 
 		System.out.println("-----更新前-----");
-		// 更新したい従業員をまずload()メソッドを使って取得する
-		Employee employee = dao.load(1000);
+		// 更新したい従業員をまずfindById()メソッドを使って取得する
+		Employee employee = dao.findById(1000);
 		System.out.println("id = " + employee.getId());
 		System.out.println("name = " + employee.getName());
 		System.out.println("age = " + employee.getAge());
@@ -21,7 +21,7 @@ public class UpdateExample {
 		dao.update(employee);
 
 		System.out.println("-----更新後-----");
-		employee = dao.load(1000);
+		employee = dao.findById(1000);
 		System.out.println("id = " + employee.getId());
 		System.out.println("name = " + employee.getName());
 		System.out.println("age = " + employee.getAge());
