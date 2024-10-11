@@ -10,7 +10,7 @@ public class Employee {
 
 	// テーブルの列に対応したフィールド変数の宣言
 	/** ID */
-	private Integer id; // ← 参照データ型にする
+	private Long id; // ← 参照データ型にする
 	/** 名前 */
 	private String name;
 	/** 年齢 */
@@ -18,12 +18,12 @@ public class Employee {
 	/** 性別 */
 	private String gender;
 	/** 部署ID */
-	private Integer departmentId; // ←キャメルケースにする
+	private Long departmentId; // ←キャメルケースにする
 	// getter / setter メソッドを定義
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -44,10 +44,10 @@ public class Employee {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Integer getDepartmentId() {
+	public Long getDepartmentId() {
 		return departmentId;
 	}
-	public void setDepartmentId(Integer departmentId) {
+	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
 	}
 	@Override

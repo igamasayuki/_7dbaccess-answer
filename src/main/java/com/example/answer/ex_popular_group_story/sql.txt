@@ -1,16 +1,16 @@
 DROP TABLE IF EXISTS colors;
 
 CREATE TABLE colors (
-    id    integer primary key,
+    id    bigint primary key,
     name  text
 );
 
 DROP TABLE IF EXISTS members;
 
 CREATE TABLE members(
-    id    		serial		primary key,
+    id    		bigserial		primary key,
     name    	text		not null,
     birth_day	date,
     gender    	varchar(1),
-    color_id	integer		REFERENCES colors (id)
+    color_id	bigint		REFERENCES colors (id)
 );

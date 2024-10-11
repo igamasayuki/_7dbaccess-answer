@@ -29,7 +29,7 @@ public class TryWithResourcesSample {
 					
 			// 結果の操作
 			while (rs.next()) {
-				int id = rs.getInt("id"); 
+				long id = rs.getLong("id");
 				String name = rs.getString("name"); 
 				int age = rs.getInt("age"); 
 

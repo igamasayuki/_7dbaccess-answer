@@ -39,7 +39,7 @@ public class SelectSample {
 
 			// (5)結果の操作
 			while (rs.next()) {
-				int id = rs.getInt("id"); // id列をint型で取り出す
+				long id = rs.getLong("id"); // id列をint型で取り出す
 				String name = rs.getString("name"); // name列をString型で取り出す
 				int age = rs.getInt("age"); // age列をint型で取り出す
 

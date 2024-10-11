@@ -2,14 +2,14 @@ DROP TABLE IF EXISTS departments;
 DROP TABLE IF EXISTS employees;
 
 CREATE TABLE employees (
-       id    serial primary key,
+       id    bigserial primary key,
        name    text not null,
        age    integer,
        gender    text,
-       department_id    integer
+       department_id    bigint
 );
 CREATE TABLE departments (
-       id    serial primary key,
+       id    bigserial primary key,
        name  text
 );
 INSERT INTO departments (name) values ('総務部');

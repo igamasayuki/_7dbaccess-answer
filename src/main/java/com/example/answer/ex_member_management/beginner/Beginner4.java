@@ -17,7 +17,7 @@ public class Beginner4 {
 		updateMember.setName("伊賀将之");
 		updateMember.setBirthday(LocalDate.of(1979, 7, 27));
 		updateMember.setGender("男");
-		updateMember.setColorId(6);
+		updateMember.setColorId(6L);
 
 		// 更新処理
 		int affected = memberDao.update(updateMember);

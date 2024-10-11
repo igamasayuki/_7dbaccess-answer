@@ -33,7 +33,7 @@ public class Ex01 {
 
 			// (5)結果の出力
 			while (rs.next()) {
-				int id = rs.getInt("id"); // id列をint型で取り出す
+				Long id = rs.getLong("id"); // id列をint型で取り出す
 				String name = rs.getString("name"); // name列をString型で取り出す
 
 				System.out.print("id=" + id);

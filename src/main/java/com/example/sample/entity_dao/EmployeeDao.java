@@ -25,18 +25,18 @@ public class EmployeeDao {
 		try { // SQLExceptionが発生するため例外処理
 			PreparedStatement pstmt = con.prepareStatement(sql); // SQL発行準備
 			// SQLの １番目の「?」 の部分に値(id)をセットする
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 			ResultSet rs = pstmt.executeQuery(); // SQLの実行
 
 			// 結果の取り出し
 			if (rs.next()) {
 				// 結果があった場合の処理
 				Employee employee = new Employee();
-				employee.setId(rs.getInt("id"));
+				employee.setId(rs.getLong("id"));
 				employee.setName(rs.getString("name"));
 				employee.setAge((Integer)rs.getObject("age"));
 				employee.setGender(rs.getString("gender"));
-				employee.setDepartmentId((Integer)rs.getObject("department_id"));
+				employee.setDepartmentId(rs.getLong("department_id"));
 				return employee;
 			}
 			return null; // 指定idの行がない場合などはnullを返す
@@ -60,7 +60,7 @@ public class EmployeeDao {
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			// SQLの １番目の「?」 の部分に値(departmentId)をセットする
-			pstmt.setInt(1, departmentId);
+			pstmt.setLong(1, departmentId);
 			// SQLの実行
 			ResultSet rs = pstmt.executeQuery();
 
@@ -71,11 +71,11 @@ public class EmployeeDao {
 			while (rs.next()) {
 				// 1行分のEntityを作成
 				Employee employee = new Employee();
-				employee.setId(rs.getInt("id"));
+				employee.setId(rs.getLong("id"));
 				employee.setName(rs.getString("name"));
 				employee.setAge((Integer)rs.getObject("age"));
 				employee.setGender(rs.getString("gender"));
-				employee.setDepartmentId((Integer)rs.getObject("department_id"));
+				employee.setDepartmentId(rs.getLong("department_id"));
 				employeeList.add(employee); // EntityをArrayListに追加
 			}
 
@@ -104,11 +104,11 @@ public class EmployeeDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			// SQLの 「?」 の部分にそれぞれ値をセットする
-			pstmt.setInt(1, employee.getId());
+			pstmt.setLong(1, employee.getId());
 			pstmt.setString(2, employee.getName());
 			pstmt.setInt(3, employee.getAge());
 			pstmt.setString(4, employee.getGender());
-			pstmt.setInt(5, employee.getDepartmentId());
+			pstmt.setLong(5, employee.getDepartmentId());
 
 			int affected = pstmt.executeUpdate(); // SQLの実行
 			return affected; // 更新した行数を返す
@@ -137,9 +137,9 @@ public class EmployeeDao {
 			pstmt.setString(1, employee.getName()); // SET句の｢？｣にセット
 			pstmt.setInt(2, employee.getAge());
 			pstmt.setString(3, employee.getGender());
-			pstmt.setInt(4, employee.getDepartmentId());
+			pstmt.setLong(4, employee.getDepartmentId());
 
-			pstmt.setInt(5, employee.getId());
+			pstmt.setLong(5, employee.getId());
 
 			int affected = pstmt.executeUpdate();
 			return affected;
@@ -163,7 +163,7 @@ public class EmployeeDao {
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, id);// SET句の｢？｣にセット
+			pstmt.setLong(1, id);// SET句の｢？｣にセット
 			int affected = pstmt.executeUpdate(); // DELETE文の実行
 
 			return affected;

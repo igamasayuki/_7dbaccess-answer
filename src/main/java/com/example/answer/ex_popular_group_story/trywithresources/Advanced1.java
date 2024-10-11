@@ -14,14 +14,14 @@ public class Advanced1 {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append("CREATE TABLE colors (");
-		sql.append("id integer primary key,");
+		sql.append("id bigint primary key,");
 		sql.append("name text);");
 		sql.append("CREATE TABLE members(");
-		sql.append("id serial primary key,");
+		sql.append("id bigserial primary key,");
 		sql.append("name text not null,");
 		sql.append("birth_day date,");
 		sql.append("gender varchar(1),");
-		sql.append("color_id integer REFERENCES colors (id))");
+		sql.append("color_id bigint REFERENCES colors (id))");
 		
 		try(Connection con = DriverManager.getConnection(url, user, password);
 			PreparedStatement pstmt = con.prepareStatement(sql.toString());){

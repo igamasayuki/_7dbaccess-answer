@@ -35,7 +35,7 @@ public class EmployeeDao {
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
 
 			// SQLの １番目の「?」 の部分に値(id)をセットする
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 			try (ResultSet rs = pstmt.executeQuery();) {
 				if (rs.next()) {
 					Employee employee = createEmployee(rs);
@@ -86,7 +86,7 @@ public class EmployeeDao {
 
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
 			// SQLの １番目の「?」 の部分に値(id)をセットする
-			pstmt.setInt(1, departmentId);
+			pstmt.setLong(1, departmentId);
 			try (ResultSet rs = pstmt.executeQuery();) {
 
 				ArrayList<Employee> list = new ArrayList<>();
@@ -114,13 +114,13 @@ public class EmployeeDao {
 	 */
 	private Employee createEmployee(ResultSet rs) throws SQLException {
 		Employee employee = new Employee();
-		employee.setId(rs.getInt("e_id"));
+		employee.setId(rs.getLong("e_id"));
 		employee.setName(rs.getString("e_name"));
 		employee.setAge((Integer)rs.getObject("e_age"));
 		employee.setGender(rs.getString("e_gender"));
-		employee.setDepartmentId((Integer)rs.getObject("e_department_id"));
+		employee.setDepartmentId(rs.getLong("e_department_id"));
 		Department department = new Department();
-		department.setId(rs.getInt("d_id"));
+		department.setId(rs.getLong("d_id"));
 		department.setName(rs.getString("d_name"));
 		employee.setDepartment(department);
 		return employee;

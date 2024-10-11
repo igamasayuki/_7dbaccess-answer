@@ -10,7 +10,7 @@ import java.time.LocalDate;
  */
 public class Member {
 	/** ID */
-	private Integer id;
+	private Long id;
 	/** 名前 */
 	private String name;
 	/** 誕生日 */
@@ -18,11 +18,11 @@ public class Member {
 	/** 性別 */
 	private String gender;
 	/** カラーID */
-	private Integer colorId;
+	private Long colorId;
 
 	public Member(){}
 	
-	public Member(Integer id, String name, java.time.LocalDate birthday, String gender,Integer colorId){
+	public Member(Long id, String name, java.time.LocalDate birthday, String gender,Long colorId){
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;
@@ -36,11 +36,11 @@ public class Member {
 				+ colorId + "]";
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -68,11 +68,11 @@ public class Member {
 		this.gender = gender;
 	}
 
-	public Integer getColorId() {
+	public Long getColorId() {
 		return colorId;
 	}
 
-	public void setColorId(Integer colorId) {
+	public void setColorId(Long colorId) {
 		this.colorId = colorId;
 	}
 

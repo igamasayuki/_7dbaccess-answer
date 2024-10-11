@@ -2,20 +2,20 @@ package com.example.answer.ex_member_management.entity;
 
 public class Employee {
 
-	private Integer id;
+	private Long id;
 	private String name;
 	private Integer age;
 	private String gender;
-	private Integer departmentId;
+	private Long departmentId;
 
 	/** 部署情報 */
 	private Department department;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -43,11 +43,11 @@ public class Employee {
 		this.gender = gender;
 	}
 
-	public Integer getDepartmentId() {
+	public Long getDepartmentId() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(Integer departmentId) {
+	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
 	}
 

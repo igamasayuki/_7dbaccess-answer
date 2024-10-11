@@ -17,7 +17,7 @@ public class UpdateExample {
 		// 名前、年齢、部署IDを更新する
 		employee.setName("伊賀");
 		employee.setAge(18);
-		employee.setDepartmentId(4);
+		employee.setDepartmentId(4L);
 		dao.update(employee);
 
 		System.out.println("-----更新後-----");

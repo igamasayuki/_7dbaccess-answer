@@ -23,7 +23,7 @@ public class Beginner3 {
 				String name = rs.getString("name");
 				String birth_day = rs.getString("birth_day");
 				String gender = rs.getString("gender");
-				int color_id = rs.getInt("color_id");
+				long color_id = rs.getLong("color_id");
 				System.out.println(name + "\t" + birth_day + "\t" + gender + "\t" + color_id);
 			}
 		} catch (SQLException e) {

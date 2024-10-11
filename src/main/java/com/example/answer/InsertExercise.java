@@ -7,7 +7,7 @@ public class InsertExercise {
 
 		// 追加するデータをあらわすEntity
 		Department department = new Department();
-		department.setId(1000);
+		department.setId(1000L);
 		department.setName("システム情報部");
 
 		// 先ほど作成したEntityをテーブル時追加！

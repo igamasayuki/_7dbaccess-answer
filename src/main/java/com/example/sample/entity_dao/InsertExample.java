@@ -6,11 +6,11 @@ public class InsertExample {
 
 		// 追加するデータをあらわすEntity
 		Employee employee = new Employee();
-		employee.setId(1000);
+		employee.setId(1000L);
 		employee.setName("テスト太郎");
 		employee.setAge(22);
 		employee.setGender("男");
-		employee.setDepartmentId(2);
+		employee.setDepartmentId(2L);
 
 		// 先ほど作成したEntityをテーブル時追加！
 		dao.insert(employee);

@@ -30,15 +30,15 @@ public class MemberDao2 {
 	public Member findById(int id) {
 		String sql = "SELECT id, name, birth_day, gender, color_id FROM " + TABLE_NAME + " WHERE id = ?";
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 			try (ResultSet rs = pstmt.executeQuery()) {
 				if (rs.next()) {
 					Member member = new Member();
-					member.setId(rs.getInt("id"));
+					member.setId(rs.getLong("id"));
 					member.setName(rs.getString("name"));
 					member.setBirthday(rs.getDate("birth_day").toLocalDate());
 					member.setGender(rs.getString("gender"));
-					member.setColorId((Integer)rs.getObject("color_id"));
+					member.setColorId(rs.getLong("color_id"));
 					return member;
 				}
 			}
@@ -63,11 +63,11 @@ public class MemberDao2 {
 				ArrayList<Member> list = new ArrayList<>();
 				while (rs.next()) {
 					Member member = new Member();
-					member.setId(rs.getInt("id"));
+					member.setId(rs.getLong("id"));
 					member.setName(rs.getString("name"));
 					member.setBirthday(rs.getDate("birth_day").toLocalDate());
 					member.setGender(rs.getString("gender"));
-					member.setColorId((Integer)rs.getObject("color_id"));
+					member.setColorId((rs.getLong("color_id")));
 					list.add(member);
 				}
 				return list;
@@ -91,11 +91,11 @@ public class MemberDao2 {
 			ArrayList<Member> list = new ArrayList<>();
 			while (rs.next()) {
 				Member member = new Member();
-				member.setId(rs.getInt("id"));
+				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
 				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
-				member.setColorId((Integer)rs.getObject("color_id"));
+				member.setColorId(rs.getLong("color_id"));
 				list.add(member);
 			}
 			return list;
@@ -117,7 +117,7 @@ public class MemberDao2 {
 			pstmt.setString(1, member.getName());
 			pstmt.setDate(2, birthday);
 			pstmt.setString(3, member.getGender());
-			pstmt.setInt(4, member.getColorId());
+			pstmt.setLong(4, member.getColorId());
 			int affected = pstmt.executeUpdate();
 			return affected;
 		} catch (SQLException e) {
@@ -138,8 +138,8 @@ public class MemberDao2 {
 			pstmt.setString(1, member.getName());
 			pstmt.setDate(2, Date.valueOf(member.getBirthday()));
 			pstmt.setString(3, member.getGender());
-			pstmt.setInt(4, member.getColorId());
-			pstmt.setInt(5, member.getId());
+			pstmt.setLong(4, member.getColorId());
+			pstmt.setLong(5, member.getId());
 
 			int affected = pstmt.executeUpdate();
 			return affected;
@@ -158,7 +158,7 @@ public class MemberDao2 {
 		String sql = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
 
 		try (Connection com = DBManager.createConnection(); PreparedStatement pstmt = com.prepareStatement(sql);) {
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 			int affected = pstmt.executeUpdate();
 			return affected;
 		} catch (SQLException e) {

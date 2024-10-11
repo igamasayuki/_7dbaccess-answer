@@ -8,21 +8,21 @@ package com.example.answer.ex_member_management.entity;
  */
 public class Hobby {
 	/** ID */
-	private Integer id;
+	private Long id;
 	/** 名前 */
 	private String name;
 	/** 受講生ID */
-	private Integer studentId;
+	private Long studentId;
 
 	@Override
 	public String toString() {
 		return "Hobby [id=" + id + ", name=" + name + ", studentId=" + studentId + "]";
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -31,10 +31,10 @@ public class Hobby {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getStudentId() {
+	public Long getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(Integer studentId) {
+	public void setStudentId(Long studentId) {
 		this.studentId = studentId;
 	}
 

@@ -38,7 +38,7 @@ public class MemberDao {
 			// 手順３：SQL実行準備
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			// ?に値をセット※
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 
 			// 手順４：SQL実行※
 			ResultSet rs = pstmt.executeQuery();
@@ -46,11 +46,11 @@ public class MemberDao {
 			// 手順５：結果の操作※
 			if (rs.next()) {
 				Member member = new Member();
-				member.setId(rs.getInt("id"));
+				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
 				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
-				member.setColorId((Integer)rs.getObject("color_id"));
+				member.setColorId(rs.getLong("color_id"));
 				return member;
 			}
 
@@ -90,11 +90,11 @@ public class MemberDao {
 			ArrayList<Member> list = new ArrayList<>();
 			while (rs.next()) {
 				Member member = new Member();
-				member.setId(rs.getInt("id"));
+				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
 				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
-				member.setColorId((Integer)rs.getObject("color_id"));
+				member.setColorId(rs.getLong("color_id"));
 				list.add(member);
 			}
 			return list;
@@ -129,11 +129,11 @@ public class MemberDao {
 			ArrayList<Member> list = new ArrayList<>();
 			while (rs.next()) {
 				Member member = new Member();
-				member.setId(rs.getInt("id"));
+				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
 				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
-				member.setColorId((Integer)rs.getObject("color_id"));
+				member.setColorId(rs.getLong("color_id"));
 				list.add(member);
 			}
 			return list;
@@ -167,7 +167,7 @@ public class MemberDao {
 			pstmt.setString(1, member.getName());
 			pstmt.setDate(2, birthday);
 			pstmt.setString(3, member.getGender());
-			pstmt.setInt(4, member.getColorId());
+			pstmt.setLong(4, member.getColorId());
 
 			// 手順４：SQL実行※
 			int affected = pstmt.executeUpdate();
@@ -203,8 +203,8 @@ public class MemberDao {
 			pstmt.setString(1, member.getName());
 			pstmt.setDate(2, Date.valueOf(member.getBirthday()));
 			pstmt.setString(3, member.getGender());
-			pstmt.setInt(4, member.getColorId());
-			pstmt.setInt(5, member.getId());
+			pstmt.setLong(4, member.getColorId());
+			pstmt.setLong(5, member.getId());
 
 			// 手順４：SQL実行※
 			int affected = pstmt.executeUpdate();
@@ -237,7 +237,7 @@ public class MemberDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			// ?に値をセット※
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 
 			// 手順４：SQL実行※
 			int affected = pstmt.executeUpdate();

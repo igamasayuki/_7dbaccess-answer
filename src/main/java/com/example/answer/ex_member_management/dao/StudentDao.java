@@ -43,7 +43,7 @@ public class StudentDao {
 		try (Connection con = DBManager.createConnection();
 			 PreparedStatement pstmt = con.prepareStatement(sql.toString())) {
 
-			pstmt.setInt(1, id);
+			pstmt.setLong(1, id);
 
 			try (ResultSet rs = pstmt.executeQuery()) {
 
@@ -106,17 +106,17 @@ public class StudentDao {
 			String insertStudentsSql = "INSERT INTO " + TABLE_STUDENTS + "(name, age) VALUES(?, ?);";
 			try (PreparedStatement pstmt = con.prepareStatement(insertStudentsSql)) {
 				pstmt.setString(1, student.getName());
-				pstmt.setInt(2, student.getAge());
+				pstmt.setLong(2, student.getAge());
 				pstmt.executeUpdate();
 				System.out.println("INSERT成功,studentsテーブル");
 			}
 
 			// 今自動採番された受講生IDを取得する
-			int newStudentId = 0;
+			long newStudentId = 0;
 			String selectMaxIdSql = "SELECT max(id) maxId FROM students;";
 			try (PreparedStatement pstmt = con.prepareStatement(selectMaxIdSql); ResultSet rs = pstmt.executeQuery();) {
 				if (rs.next()) {
-					newStudentId = rs.getInt("maxId");
+					newStudentId = rs.getLong("maxId");
 				}
 				System.out.println("SELECT成功,studentsテーブルのmaxId取得");
 			}
@@ -126,7 +126,7 @@ public class StudentDao {
 			try (PreparedStatement pstmt = con.prepareStatement(insertHobbiesSql)) {
 				for (Hobby hobby : student.getHobbyList()) {
 					pstmt.setString(1, hobby.getName());
-					pstmt.setInt(2, newStudentId);
+					pstmt.setLong(2, newStudentId);
 					pstmt.executeUpdate();
 				}
 
@@ -156,15 +156,15 @@ public class StudentDao {
 		List<Hobby> hobbyList = null;
 		List<Student> studentList = new ArrayList<>();
 
-		int preStudentId = -1;
+		long preStudentId = -1;
 
 		while (rs.next()) {
-			int sutudentId = rs.getInt("s_id");
+			long sutudentId = rs.getLong("s_id");
 
 			// studentテーブルのidが切り替わったら行う処理,
 			if (sutudentId != preStudentId) {
 				student = new Student();
-				student.setId(rs.getInt("s_id"));
+				student.setId(rs.getLong("s_id"));
 				student.setName(rs.getString("s_name"));
 				student.setAge((Integer)rs.getObject("s_age"));
 
@@ -174,11 +174,11 @@ public class StudentDao {
 				studentList.add(student);
 			}
 
-			if (rs.getInt("h_id") != 0) {
+			if (rs.getLong("h_id") != 0) {
 				hobby = new Hobby();
-				hobby.setId(rs.getInt("h_id"));
+				hobby.setId(rs.getLong("h_id"));
 				hobby.setName(rs.getString("h_name"));
-				hobby.setStudentId(rs.getInt("h_student_id"));
+				hobby.setStudentId(rs.getLong("h_student_id"));
 
 				hobbyList.add(hobby);
 			}

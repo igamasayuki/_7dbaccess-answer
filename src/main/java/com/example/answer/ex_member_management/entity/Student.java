@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Student {
 	/** ID */
-	private Integer id;
+	private Long id;
 	/** 名前 */
 	private String name;
 	/** 年齢 */
@@ -26,10 +26,10 @@ public class Student {
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", hobbyList=" + hobbyList + "]";
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {

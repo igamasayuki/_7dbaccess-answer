@@ -36,7 +36,7 @@ public class DepartmentDao {
 			if (rs.next()) {
 				// 結果があった場合の処理
 				Department department = new Department();
-				department.setId(rs.getInt("id"));
+				department.setId(rs.getLong("id"));
 				department.setName(rs.getString("name"));
 				return department;
 			}
@@ -65,7 +65,7 @@ public class DepartmentDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			// SQLの 「?」 の部分にそれぞれ値をセットする
-			pstmt.setInt(1, department.getId());
+			pstmt.setLong(1, department.getId());
 			pstmt.setString(2, department.getName());
 
 			int affected = pstmt.executeUpdate(); // SQLの実行
@@ -93,7 +93,7 @@ public class DepartmentDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, department.getName()); // SET句の｢？｣にセット
-			pstmt.setInt(2, department.getId());
+			pstmt.setLong(2, department.getId());
 
 			int affected = pstmt.executeUpdate();
 			return affected;
@@ -117,7 +117,7 @@ public class DepartmentDao {
 
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, id);// SET句の｢？｣にセット
+			pstmt.setLong(1, id);// SET句の｢？｣にセット
 			int affected = pstmt.executeUpdate(); // DELETE文の実行
 
 			return affected;
