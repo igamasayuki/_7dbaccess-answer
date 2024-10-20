@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeDao {
 	private static final String TABLE_NAME = "employees"; // テーブル名
@@ -45,6 +46,41 @@ public class EmployeeDao {
 			throw new RuntimeException("findById処理に失敗しました", ex);
 		} finally {
 			DBManager.closeConnection(con); // 切断
+		}
+	}
+
+	/**
+	 * employeesテーブルの主キーを元にEmployeeオブジェクトを取得します。
+	 *
+	 * @param id employeesテーブルの主キーであるidの値
+	 * @return 指定されたIDに対応するEmployeeオブジェクトを含むOptional。
+	 *         存在しない場合はOptional.empty()を返します。
+	 * @throws RuntimeException SQLエラーが発生した場合にスローされます。
+	 */
+	public Optional<Employee> findById2(int id) {
+		Connection con = DBManager.createConnection();
+		String sql = "SELECT id, name, age, gender, department_id FROM employees WHERE id = ?";
+
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setLong(1, id);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				Employee employee = new Employee();
+				employee.setId(rs.getLong("id"));
+				employee.setName(rs.getString("name"));
+				employee.setAge((Integer) rs.getObject("age"));
+				employee.setGender(rs.getString("gender"));
+				employee.setDepartmentId(rs.getLong("department_id"));
+				return Optional.of(employee); // Optionalでラップ
+			}
+			return Optional.empty(); // 値がない場合はOptional.empty()を返す
+
+		} catch (SQLException ex) {
+			throw new RuntimeException("findById処理に失敗しました", ex);
+		} finally {
+			DBManager.closeConnection(con);
 		}
 	}
 
