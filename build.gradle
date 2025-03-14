@@ -11,6 +11,8 @@ repositories {
 
 dependencies {
     implementation 'org.postgresql:postgresql:42.7.4'
+    compileOnly 'org.projectlombok:lombok:1.18.36'  // コンパイル時のみ使用
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'  // Lombokのアノテーション処理を有効化
 
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
