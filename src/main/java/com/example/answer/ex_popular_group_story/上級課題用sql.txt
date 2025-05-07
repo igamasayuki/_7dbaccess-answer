@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS colors;
+DROP TABLE IF EXISTS colors CASCADE; // colorsテーブルを削除する際に、外部キーで参照しているテーブル（例: members.color_id）も同時に削除する
 
 CREATE TABLE colors (
     id    bigint primary key,
