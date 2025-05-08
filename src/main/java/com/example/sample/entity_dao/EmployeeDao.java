@@ -17,7 +17,7 @@ public class EmployeeDao {
 	 * @param id employeesテーブルの主キーであるidの値
 	 * @return 主キーに対応するテーブルの行の情報を持つEmployeeオブジェクト
 	 */
-	public Employee findById(int id) {
+	public Employee findById(Long id) {
 		Connection con = DBManager.createConnection(); // 接続
 
 		// 実行するSQL文 (fromの次とwhereの前に半角スペースを入れています)
@@ -57,7 +57,7 @@ public class EmployeeDao {
 	 *         存在しない場合はOptional.empty()を返します。
 	 * @throws RuntimeException SQLエラーが発生した場合にスローされます。
 	 */
-	public Optional<Employee> findById2(int id) {
+	public Optional<Employee> findById2(Long id) {
 		Connection con = DBManager.createConnection();
 		String sql = "SELECT id, name, age, gender, department_id FROM employees WHERE id = ?";
 
@@ -193,7 +193,7 @@ public class EmployeeDao {
 	 * @param id 削除したい従業員ID
 	 * @return 削除した件数
 	 */
-	public int deleteById(int id) {
+	public int deleteById(Long id) {
 		Connection con = DBManager.createConnection();
 		String sql = "DELETE FROM " + TABLE_NAME + " WHERE id = ?";
 

@@ -25,7 +25,7 @@ public class DBManager { private final static String DB_NAME = "student";
 			return connection;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new RuntimeException("DBの切断に失敗しました", e);
+			throw new Error("DBの切断に失敗しました", e);
 		}
 	}
 	
@@ -37,6 +37,9 @@ public class DBManager { private final static String DB_NAME = "student";
 	public static void closeConnection(Connection con) {
 		try {
 			con.close();
-		} catch (Exception e) {}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Error("DBの切断に失敗しました", e);
+		}
 	}
 }

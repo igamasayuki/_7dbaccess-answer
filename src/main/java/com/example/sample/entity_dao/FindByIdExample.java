@@ -3,7 +3,7 @@ package com.example.sample.entity_dao;
 public class FindByIdExample {
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
-		Employee employee = dao.findById(2);
+		Employee employee = dao.findById(2L);
 		if(employee == null) {
 			System.out.println("指定されたデータは存在しません");
 			return;
