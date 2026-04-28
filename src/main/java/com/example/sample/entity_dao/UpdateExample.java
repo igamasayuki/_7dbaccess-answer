@@ -7,7 +7,7 @@ public class UpdateExample {
 
 		System.out.println("-----更新前-----");
 		// 更新したい従業員をまずfindById()メソッドを使って取得する
-		Employee employee = dao.findById(1000);
+		Employee employee = dao.findById(1000L);
 		System.out.println("id = " + employee.getId());
 		System.out.println("name = " + employee.getName());
 		System.out.println("age = " + employee.getAge());
@@ -21,7 +21,7 @@ public class UpdateExample {
 		dao.update(employee);
 
 		System.out.println("-----更新後-----");
-		employee = dao.findById(1000);
+		employee = dao.findById(1000L);
 		System.out.println("id = " + employee.getId());
 		System.out.println("name = " + employee.getName());
 		System.out.println("age = " + employee.getAge());

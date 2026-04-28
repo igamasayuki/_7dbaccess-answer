@@ -6,7 +6,7 @@ public class FindByIdExample3 {
     public static void main(String[] args) {
         EmployeeDao dao = new EmployeeDao();
         // Optionalを使ってデータが存在しない場合の処理を記述
-        dao.findById2(1000).ifPresentOrElse(
+        dao.findById2(1000L).ifPresentOrElse(
             // データが存在する場合の処理
             employee -> {
                 System.out.println("id = " + employee.getId());
