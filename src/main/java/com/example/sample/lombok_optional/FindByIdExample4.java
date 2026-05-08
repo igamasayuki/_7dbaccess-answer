@@ -1,12 +1,11 @@
-package com.example.sample.entity_dao;
+package com.example.sample.lombok_optional;
 
-import java.util.Optional;
 
-public class FindByIdExample3 {
+public class FindByIdExample4 {
     public static void main(String[] args) {
         EmployeeDao dao = new EmployeeDao();
         // Optionalを使ってデータが存在しない場合の処理を記述
-        dao.findById2(1000L).ifPresentOrElse(
+        dao.findById(1000L).ifPresentOrElse(
             // データが存在する場合の処理
             employee -> {
                 System.out.println("id = " + employee.getId());

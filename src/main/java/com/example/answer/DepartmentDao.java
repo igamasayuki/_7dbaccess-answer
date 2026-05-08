@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.example.sample.entity_dao.DBManager;
+import com.example.sample.util.DBManager;
 
 /**
  * departmentsテーブルを操作するDao.

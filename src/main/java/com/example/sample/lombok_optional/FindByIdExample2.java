@@ -1,11 +1,11 @@
-package com.example.sample.entity_dao;
+package com.example.sample.lombok_optional;
 
 import java.util.Optional;
 
 public class FindByIdExample2 {
 	public static void main(String[] args) {
 		EmployeeDao dao = new EmployeeDao();
-		Optional<Employee> optional = dao.findById2(2L);
+		Optional<Employee> optional = dao.findById(2L);
 		if(optional.isEmpty()) { // Optionalが空かどうか判定
 			System.out.println("指定されたデータは存在しません");
 			return;

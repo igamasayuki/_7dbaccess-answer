@@ -42,3 +42,20 @@ CREATE TABLE students( id bigserial primary key, name text not null, age integer
 
 DROP TABLE IF EXISTS hobbies;
 CREATE TABLE hobbies( id bigserial primary key, name text not null, student_id bigint);
+
+-- studentsテーブルへのINSERT
+INSERT INTO students (id, name, age) VALUES
+(1, 'Iga', 20),
+(2, 'Taro', 35),
+(3, 'Hanako', 28);
+
+-- hobbiesテーブルへのINSERT
+INSERT INTO hobbies (id, name, student_id) VALUES
+(1, 'running', 1),
+(2, 'swimming', 1),
+(3, 'cycling', 1),
+(4, 'reading books', 2),
+(5, 'watching movies', 2),
+(6, 'football', 3),
+(7, 'tennis', 3),
+(8, 'baseball', 3);

@@ -1,4 +1,4 @@
-package com.example.sample.entity_dao;
+package com.example.sample.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
