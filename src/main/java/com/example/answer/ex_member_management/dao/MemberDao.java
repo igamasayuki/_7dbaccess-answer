@@ -48,8 +48,7 @@ public class MemberDao {
 				Member member = new Member();
 				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
-				Date birthDay = rs.getDate("birth_day");
-				member.setBirthday(birthDay != null ? birthDay.toLocalDate() : null);
+				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
 				member.setColorId(rs.getLong("color_id"));
 				return member;
@@ -93,8 +92,7 @@ public class MemberDao {
 				Member member = new Member();
 				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
-				Date birthDay = rs.getDate("birth_day");
-				member.setBirthday(birthDay != null ? birthDay.toLocalDate() : null);
+				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
 				member.setColorId(rs.getLong("color_id"));
 				list.add(member);
@@ -133,8 +131,7 @@ public class MemberDao {
 				Member member = new Member();
 				member.setId(rs.getLong("id"));
 				member.setName(rs.getString("name"));
-				Date birthDay = rs.getDate("birth_day");
-				member.setBirthday(birthDay != null ? birthDay.toLocalDate() : null);
+				member.setBirthday(rs.getDate("birth_day").toLocalDate());
 				member.setGender(rs.getString("gender"));
 				member.setColorId(rs.getLong("color_id"));
 				list.add(member);
@@ -166,7 +163,7 @@ public class MemberDao {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 
 			// ?に値をセット※
-			Date birthday = member.getBirthday() != null ? Date.valueOf(member.getBirthday()) : null;
+			Date birthday = Date.valueOf(member.getBirthday());
 			pstmt.setString(1, member.getName());
 			pstmt.setDate(2, birthday);
 			pstmt.setString(3, member.getGender());
@@ -204,7 +201,7 @@ public class MemberDao {
 
 			// ?に値をセット※
 			pstmt.setString(1, member.getName());
-			pstmt.setDate(2, member.getBirthday() != null ? Date.valueOf(member.getBirthday()) : null);
+			pstmt.setDate(2, Date.valueOf(member.getBirthday()));
 			pstmt.setString(3, member.getGender());
 			pstmt.setLong(4, member.getColorId());
 			pstmt.setLong(5, member.getId());
